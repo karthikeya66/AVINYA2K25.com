@@ -10,10 +10,6 @@ const ContactSection = () => {
     {
       name: "A. Rahul Sai", 
       phone: "+91 9347613587"
-    },
-    {
-      name: "Karthik Deshmukh",
-      phone: "+91 7569236628"
     }
   ];
 
