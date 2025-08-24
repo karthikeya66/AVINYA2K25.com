@@ -1,6 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
+import { REGISTER_FORM_URL } from "@/lib/links";
 import { Calendar, MapPin } from "lucide-react";
+
+const CountdownItem = ({ value, label }: { value: number; label: string }) => (
+  <div className="flex flex-col items-center">
+    <div className="text-4xl md:text-6xl font-bold text-primary">
+      {value.toString().padStart(2, '0')}
+    </div>
+    <div className="text-sm text-muted-foreground">{label}</div>
+  </div>
+);
 
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -10,28 +20,36 @@ const HeroSection = () => {
     seconds: 0,
   });
 
-  useEffect(() => {
-    const targetDate = new Date("2025-09-18T00:00:00");
+  const targetDate = useMemo(() => new Date("2025-09-18T00:00:00"), []);
 
+  useEffect(() => {
     const updateCountdown = () => {
       const now = new Date().getTime();
       const distance = targetDate.getTime() - now;
 
       if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
         setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000),
+          days,
+          hours,
+          minutes,
+          seconds,
         });
       }
     };
 
+    // Update immediately
     updateCountdown();
+    
+    // Then update every second
     const interval = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [targetDate]);
 
   return (
     <section className="min-h-screen flex items-center justify-center relative px-6 pt-20">
@@ -71,12 +89,21 @@ const HeroSection = () => {
         {/* Action Buttons */}
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
           <Button 
-            className="bg-primary hover:bg-primary-glow text-primary-foreground px-8 py-3 text-lg font-semibold rounded-lg hover-glow animate-pulse-glow"
-            onClick={() => window.open('https://forms.gle/YsjWa5qstQYPeFgD7', '_blank')}
+            onClick={() => {
+              const element = document.getElementById('registration-pricing');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
           >
             ⚡ Register Now
           </Button>
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3 text-lg font-semibold rounded-lg hover-glow">
+          <Button 
+            variant="outline" 
+            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3 text-lg font-semibold rounded-lg hover-glow"
+            onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             📖 Learn More
           </Button>
         </div>
@@ -84,22 +111,14 @@ const HeroSection = () => {
         {/* Countdown Timer */}
         <div className="mt-12">
           <h3 className="text-xl font-semibold text-primary mb-6">Time Until Launch</h3>
-          <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
-            {[
-              { label: "DAYS", value: timeLeft.days },
-              { label: "HOURS", value: timeLeft.hours },
-              { label: "MINUTES", value: timeLeft.minutes },
-              { label: "SECONDS", value: timeLeft.seconds },
-            ].map((item) => (
-              <div key={item.label} className="glass rounded-xl p-4 border border-primary/20 hover-scale">
-                <div className="text-3xl font-bold text-primary text-glow">
-                  {item.value.toString().padStart(2, "0")}
-                </div>
-                <div className="text-xs text-text-muted font-medium mt-1">
-                  {item.label}
-                </div>
-              </div>
-            ))}
+          <div className="flex justify-center gap-4">
+            <CountdownItem value={timeLeft.days} label="Days" />
+            <div className="text-4xl md:text-6xl font-bold text-primary flex items-center">:</div>
+            <CountdownItem value={timeLeft.hours} label="Hours" />
+            <div className="text-4xl md:text-6xl font-bold text-primary flex items-center">:</div>
+            <CountdownItem value={timeLeft.minutes} label="Minutes" />
+            <div className="text-4xl md:text-6xl font-bold text-primary flex items-center">:</div>
+            <CountdownItem value={timeLeft.seconds} label="Seconds" />
           </div>
         </div>
       </div>

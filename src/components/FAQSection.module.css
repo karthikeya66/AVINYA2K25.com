@@ -1,0 +1,127 @@
+.faqSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.faqItem {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+
+.faqItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 150, 255, 0.4);
+  background: rgba(10, 25, 47, 0.7);
+  border-color: rgba(0, 255, 255, 0.6);
+}
+
+.faqItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.faqItem:hover::before {
+  opacity: 1;
+}
+
+.faqQuestion {
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0;
+  padding-right: 30px;
+  transition: color 0.3s ease;
+}
+
+.faqItem:hover .faqQuestion {
+  color: #7dd3fc;
+}
+
+.faqAnswer {
+  color: #e2e8f0;
+  line-height: 1.6;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(226, 232, 240, 0.1);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.toggleIcon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  color: #7dd3fc;
+}
+
+.faqItem.open .toggleIcon {
+  transform: translateY(-50%) rotate(180deg);
+  color: #38bdf8;
+}
+
+.contactBox {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 32px;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.contactBox:hover {
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.4);
+  border-color: rgba(0, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.contactTitle {
+  color: #7dd3fc;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.contactText {
+  color: #e2e8f0;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .faqItem {
+    padding: 12px 16px;
+  }
+  
+  .faqQuestion {
+    font-size: 1rem;
+    padding-right: 25px;
+  }
+  
+  .toggleIcon {
+    right: 15px;
+  }
+}

@@ -1,87 +1,64 @@
-import { Target, Lightbulb, Users } from "lucide-react";
+import { Code, GraduationCap, Users, UserCircle2 } from "lucide-react";
 
 const AboutSection = () => {
   const features = [
     {
-      icon: Target,
-      title: "Mission",
-      description: "Build cutting-edge AI solutions that address real-world challenges in just 24 hours of intensive development.",
-      gradient: "from-primary to-primary-glow",
+      icon: Code,
+      title: "24-Hour Sprint",
+      description: "Intense coding marathon where groundbreaking solutions come to life",
+      gradient: "from-purple-500 to-blue-500"
     },
     {
-      icon: Lightbulb,
-      title: "Why Attend",
-      description: "Experience innovation, receive expert mentorship, collaborate with brilliant minds, and compete for amazing prizes.",
-      gradient: "from-success to-success-glow",
+      icon: GraduationCap,
+      title: "Bootcamp Experience",
+      description: "Hands-on learning sessions with industry experts and mentors",
+      gradient: "from-pink-500 to-rose-500"
     },
     {
       icon: Users,
-      title: "Hosted By",
-      description: "Department of Artificial Intelligence, Anurag University - Leading the future of AI education and research.",
-      gradient: "from-accent-blue to-accent-cyan",
+      title: "Top Innovators",
+      description: "Collaborate with the best minds from across the nation",
+      gradient: "from-blue-500 to-cyan-500"
     },
+    {
+      icon: UserCircle2,
+      title: "Expert Mentors",
+      description: "Learn from industry leaders and technology pioneers",
+      gradient: "from-green-500 to-emerald-500"
+    }
   ];
 
   return (
     <section id="about" className="py-20 px-6 relative">
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-slide-in">
-          <h2 className="text-4xl md:text-6xl font-bold text-neon bg-gradient-to-r from-primary via-primary-glow to-accent-cyan bg-clip-text text-transparent mb-6">
-            About AVINYA 2K25
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            About <span className="bg-gradient-to-r from-[#6C63FF] to-[#A855F7] bg-clip-text text-transparent">AVINYA 2K25</span>
           </h2>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Join us for an intensive 24-hour journey where innovation meets artificial intelligence. 
-            AVINYA 2K25 combines the thrill of competitive hackathon with comprehensive bootcamp learning.
+            The premier national-level hackathon and bootcamp experience that brings together the brightest minds in technology for an intense 24-hour coding sprint where innovation meets creativity.
           </p>
         </div>
 
         {/* Feature Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <div 
-                key={feature.title}
-                className="glass rounded-xl p-8 border border-card-border/20 hover-scale group transition-all duration-500"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                {/* Icon */}
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center mb-6 group-hover:animate-float`}>
-                  <Icon className="h-8 w-8 text-white" />
-                </div>
-
-                {/* Content */}
-                <h3 className="text-2xl font-bold text-primary mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-text-secondary leading-relaxed">
-                  {feature.description}
-                </p>
+        <div className="grid md:grid-cols-4 gap-6">
+          {features.map((feature, index) => (
+            <div 
+              key={feature.title}
+              className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className={`w-14 h-14 rounded-full bg-gradient-to-r ${feature.gradient} flex items-center justify-center mb-4`}>
+                <feature.icon className="h-6 w-6 text-white" />
               </div>
-            );
-          })}
-        </div>
-
-        {/* Stats Section */}
-        <div className="mt-20 glass rounded-2xl p-8 border border-primary/20">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { number: "24", label: "Hours of Coding", suffix: "" },
-              { number: "₹1", label: "Lakh Prize Pool", suffix: "" },
-              { number: "500+", label: "Participants", suffix: "" },
-              { number: "20+", label: "Mentors & Judges", suffix: "" },
-            ].map((stat, index) => (
-              <div key={index} className="space-y-2">
-                <div className="text-3xl md:text-4xl font-bold text-glow bg-gradient-to-r from-primary to-accent-cyan bg-clip-text text-transparent">
-                  {stat.number}{stat.suffix}
-                </div>
-                <div className="text-text-muted font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+              <h3 className="text-xl font-semibold text-primary mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-text-secondary text-sm">
+                {feature.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

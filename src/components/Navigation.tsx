@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { REGISTER_FORM_URL } from "@/lib/links";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
@@ -9,7 +10,11 @@ const Navigation = () => {
     { label: "About", href: "#about" },
     { label: "Tracks", href: "#tracks" },
     { label: "Prizes", href: "#prizes" },
+    { label: "Pricing", href: "#registration" },
     { label: "Schedule", href: "#schedule" },
+    { label: "Venue", href: "#venue" },
+    { label: "Partners", href: "#partners" },
+    { label: "Clubs", href: "#clubs" },
     { label: "FAQ", href: "#faq" },
     { label: "Contact", href: "#contact" },
   ];
@@ -48,8 +53,8 @@ const Navigation = () => {
           <div className="hidden md:block">
             <Button 
               variant="default" 
-              className="bg-primary hover:bg-primary-glow text-primary-foreground font-semibold px-6 py-2 rounded-lg hover-glow"
-              onClick={() => window.open('https://forms.gle/YsjWa5qstQYPeFgD7', '_blank')}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-6 py-2 rounded-lg transition-all duration-300"
+              onClick={() => window.open(REGISTER_FORM_URL, '_blank')}
             >
               ⚡ Register Now
             </Button>
@@ -81,8 +86,8 @@ const Navigation = () => {
               ))}
               <Button 
                 variant="default" 
-                className="bg-primary hover:bg-primary-glow text-primary-foreground font-semibold w-full mt-4"
-                onClick={() => window.open('https://forms.gle/YsjWa5qstQYPeFgD7', '_blank')}
+                className="bg-primary text-primary-foreground font-semibold w-full mt-4 hover:bg-primary/90"
+                onClick={() => window.open(REGISTER_FORM_URL, '_blank')}
               >
                 ⚡ Register Now
               </Button>

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import styles from "./FAQSection.module.css";
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -36,13 +37,16 @@ const FAQSection = () => {
   };
 
   return (
-    <section id="faq" className="py-20 px-6 relative">
+    <section id="faq" className={`py-20 px-4 sm:px-6 relative ${styles.faqSection}`}>
       <div className="container mx-auto max-w-4xl">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-accent-cyan text-neon mb-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-accent-cyan to-accent-blue bg-clip-text text-transparent mb-4">
             Frequently Asked Questions
           </h2>
+          <p className="text-text-secondary max-w-2xl mx-auto text-lg">
+            Find answers to common questions about AVINYA 2K25. Can't find what you're looking for? Contact us below!
+          </p>
         </div>
 
         {/* FAQ Items */}
@@ -50,29 +54,19 @@ const FAQSection = () => {
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className="glass rounded-xl border border-card-border/20 overflow-hidden hover-scale transition-all duration-300"
+              className={`${styles.faqItem} ${openIndex === index ? 'open' : ''}`}
+              onClick={() => toggleFAQ(index)}
             >
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full p-6 text-left flex items-center justify-between hover:bg-primary/5 transition-colors duration-300"
-              >
-                <h3 className="text-lg font-semibold text-text-primary pr-4">
+              <div className="flex items-center justify-between">
+                <h3 className={styles.faqQuestion}>
                   {faq.question}
                 </h3>
-                <div className="flex-shrink-0 text-primary">
-                  {openIndex === index ? (
-                    <ChevronUp className="h-6 w-6" />
-                  ) : (
-                    <ChevronDown className="h-6 w-6" />
-                  )}
-                </div>
-              </button>
+                <ChevronDown className={styles.toggleIcon} />
+              </div>
               
               {openIndex === index && (
-                <div className="px-6 pb-6 border-t border-card-border/10">
-                  <p className="text-text-secondary leading-relaxed pt-4">
-                    {faq.answer}
-                  </p>
+                <div className={styles.faqAnswer}>
+                  {faq.answer}
                 </div>
               )}
             </div>
@@ -80,13 +74,11 @@ const FAQSection = () => {
         </div>
 
         {/* Still have questions? */}
-        <div className="mt-12 text-center">
-          <div className="glass rounded-xl p-6 border border-accent-cyan/30 inline-block">
-            <p className="text-accent-cyan font-semibold mb-2">Still have questions?</p>
-            <p className="text-text-secondary">
-              Reach out to our team through the contact section below. We're here to help!
-            </p>
-          </div>
+        <div className={styles.contactBox}>
+          <p className={styles.contactTitle}>Still have questions?</p>
+          <p className={styles.contactText}>
+            Reach out to our team through the contact section below. We're here to help!
+          </p>
         </div>
       </div>
     </section>
