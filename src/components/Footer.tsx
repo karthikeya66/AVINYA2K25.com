@@ -5,13 +5,13 @@ const Footer = () => {
   const socialLinks = [
     { icon: <FaFacebook className="text-white text-lg" />, color: 'from-blue-400 to-blue-600', url: '#' },
     { icon: <FaTwitter className="text-white text-lg" />, color: 'from-sky-400 to-sky-600', url: '#' },
-    { icon: <FaInstagram className="text-white text-lg" />, color: 'from-pink-400 to-yellow-400', url: '#' },
+    { icon: <FaInstagram className="text-white text-lg" />, color: 'from-pink-400 to-yellow-400', url: 'https://www.instagram.com/avinya__2k25?igsh=cDkzZXBieGYxaHlr' },
     { icon: <FaLinkedin className="text-white text-lg" />, color: 'from-blue-500 to-cyan-500', url: '#' },
     { icon: <FaEnvelope className="text-white text-lg" />, color: 'from-green-400 to-emerald-600', url: 'mailto:contact@avinya2k25.com' },
   ];
 
   return (
-    <footer className="bg-gradient-to-t from-black via-purple-900 to-indigo-900 text-gray-200 py-12 relative">
+    <footer className="bg-gradient-to-t from-black via-purple-900 to-indigo-900 text-gray-200 py-12 relative z-50 pointer-events-auto">
       <div className="max-w-5xl mx-auto px-6 text-center">
         {/* Title */}
         <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
@@ -27,7 +27,7 @@ const Footer = () => {
         </p>
 
         {/* Social Icons */}
-        <div className="flex justify-center space-x-6 mt-6">
+        <div className="flex justify-center space-x-6 mt-6 relative z-50">
           {socialLinks.map((item, index) => (
             <a
               key={index}

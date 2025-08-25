@@ -10,7 +10,7 @@ const Navigation = () => {
     { label: "About", href: "#about" },
     { label: "Tracks", href: "#tracks" },
     { label: "Prizes", href: "#prizes" },
-    { label: "Pricing", href: "#registration" },
+    { label: "Register", href: "#registration" },
     { label: "Schedule", href: "#schedule" },
     { label: "Venue", href: "#venue" },
     { label: "Partners", href: "#partners" },

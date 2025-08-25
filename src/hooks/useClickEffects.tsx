@@ -31,9 +31,12 @@ export const useClickEffects = () => {
   }, []);
 
   const handleClick = useCallback((event: React.MouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
-    
+    // If the click originated on interactive elements, don't interfere
+    const target = event.target as HTMLElement | null;
+    if (target && target.closest('a, button, [role="button"], [role="link"], input, textarea, select, summary, label')) {
+      return; // allow default browser behavior (e.g., following links)
+    }
+
     const x = event.clientX;
     const y = event.clientY;
     

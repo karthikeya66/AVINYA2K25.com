@@ -7,10 +7,10 @@ type Club = {
 };
 
 const clubs: Club[] = [
-  { name: "Hackspace Club", role: "Host", logo: "https://avinya2k25.vercel.app/assets/images/clubs/hs.jpg" },
-  { name: "Coding Club", role: "Co-organizer", logo: "https://avinya2k25.vercel.app/assets/images/clubs/cb.jpg" },
-  { name: "A2I Club", role: "Co-organizer", logo: "https://avinya2k25.vercel.app/assets/images/clubs/a2i.jpg" },
-  { name: "ISTE Club", role: "Partner", logo: "https://avinya2k25.vercel.app/assets/images/clubs/iste.jpg" },
+  { name: "Hackspace Club", role: "Igniting Innovation, One Hack at a Time", logo: "https://avinya2k25.vercel.app/assets/images/clubs/hs.jpg" },
+  { name: "Coding Club", role: "Where Coders Begin and Leaders Emerge", logo: "https://avinya2k25.vercel.app/assets/images/clubs/cb.jpg" },
+  { name: "A2I Club", role: "Towards Intelligence Beyond Artificial", logo: "https://avinya2k25.vercel.app/assets/images/clubs/a2i.jpg" },
+  { name: "ISTE Chapter", role: "Empowering Tech. Enabling Growth", logo: "https://avinya2k25.vercel.app/assets/images/clubs/iste.jpg" },
 ];
 
 const ClubsSection = () => {

@@ -1,3 +1,4 @@
+import ParticlesBackground from "@/components/ParticlesBackground";
 import MeteorField from "@/components/MeteorField";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
@@ -7,6 +8,7 @@ import TracksSection from "@/components/TracksSection";
 import WhyAttendSection from "@/components/WhyAttendSection";
 import EventTimeline from "@/components/EventTimeline";
 import RegistrationPricingSection from "@/components/RegistrationPricingSection";
+import OrganizingCommittee from "@/components/OrganizingCommittee";
 import ContactSection from "@/components/ContactSection";
 import VenueSection from "@/components/VenueSection";
 import PartnersSection from "@/components/PartnersSection";
@@ -21,6 +23,9 @@ const Index = () => {
 
   return (
     <div className="app-container" onClick={handleClick}>
+      {/* Particle Background */}
+      <ParticlesBackground />
+      
       {/* Animated Meteor Background */}
       <MeteorField />
       
@@ -95,6 +100,12 @@ const Index = () => {
         <div className="section">
           <div className="container">
             <ClubsSection />
+          </div>
+        </div>
+        
+        <div className="section">
+          <div className="container">
+            <OrganizingCommittee />
           </div>
         </div>
         

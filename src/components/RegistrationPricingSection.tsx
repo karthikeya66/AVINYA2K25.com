@@ -1,6 +1,39 @@
-import { Users, Zap, CheckCircle, Star } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { REGISTER_FORM_URL } from "@/lib/links";
-import SpecialOfferCard from "./SpecialOfferCard";
+import { useEffect } from "react";
+import CherryBlossomEffect from "./CherryBlossomEffect";
+
+const CautionTape = () => (
+  <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+    <div 
+      className="absolute h-9 w-[150%] -left-1/4 -rotate-6"
+      style={{
+        background: 'repeating-linear-gradient(45deg, #fcd34d, #fcd34d 25px, #111827 25px, #111827 50px)',
+        boxShadow: '0 4px 15px rgba(0,0,0,0.4)',
+        top: '15%',
+        overflow: 'hidden'
+      }}
+    >
+      <div className="tape-text whitespace-nowrap text-black font-bold text-sm md:text-base leading-relaxed">
+        &nbsp;CAUTION&nbsp;CAUTION&nbsp;CAUTION&nbsp;CAUTION&nbsp;CAUTION&nbsp;
+      </div>
+    </div>
+    <div 
+      className="absolute h-9 w-[150%] -left-1/4 -rotate-6"
+      style={{
+        background: 'repeating-linear-gradient(45deg, #fcd34d, #fcd34d 25px, #111827 25px, #111827 50px)',
+        boxShadow: '0 4px 15px rgba(0,0,0,0.4)',
+        bottom: '20%',
+        overflow: 'hidden',
+        animationDelay: '-2.5s'
+      }}
+    >
+      <div className="tape-text whitespace-nowrap text-black font-bold text-sm md:text-base leading-relaxed">
+        &nbsp;KEEP OUT&nbsp;KEEP OUT&nbsp;KEEP OUT&nbsp;KEEP OUT&nbsp;KEEP OUT&nbsp;
+      </div>
+    </div>
+  </div>
+);
 
 const RegistrationPricingSection = () => {
   const plans = [
@@ -48,93 +81,154 @@ const RegistrationPricingSection = () => {
         "Networking opportunities"
       ],
       buttonText: "Coming Soon",
-      isRecommended: false,
       isDisabled: true,
+      isRecommended: false,
       gradient: "from-gray-500/80 to-gray-600/80",
       buttonGradient: "from-gray-500 to-gray-600"
     }
   ];
 
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes scroll-text {
+        from { transform: translateX(0%); }
+        to { transform: translateX(-50%); }
+      }
+      .tape-text {
+        display: inline-block;
+        animation: scroll-text 5s linear infinite;
+        padding: 8px 0;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   return (
-    <section id="registration-pricing" className="py-16 md:py-24">
-    <section id="pricing" className="py-20 px-4 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto relative z-10">
-<div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+    <section id="registration-pricing" className="py-16 md:py-24 bg-transparent overflow-visible">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-white leading-relaxed">
             <span className="bg-gradient-to-r from-[#3bb6ff] to-[#a259ff] bg-clip-text text-transparent">
-              Registration & Pricing
+              Register Now
             </span>
           </h2>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+            Secure your spot at the most anticipated event of the year. Limited seats available!
+          </p>
           <div className="w-24 h-1 bg-gradient-to-r from-[#3bb6ff] to-[#a259ff] mx-auto rounded-full mb-12"></div>
-        
-          {/* Special Offer Card */}
-          <div className="max-w-4xl mx-auto w-full mb-16">
-            <SpecialOfferCard />
+        </div>
+
+        {/* Special Offer */}
+        <div className="flex justify-center mb-20 relative">
+          <CherryBlossomEffect targetId="special-offer" />
+          <div 
+            id="special-offer"
+            className="relative w-full max-w-4xl backdrop-blur-lg rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20 overflow-visible"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255, 240, 245, 0.95) 0%, rgba(255, 228, 230, 0.95) 100%)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+            }}
+          >
+            <div className="relative z-10">
+              <h2 className="text-center text-2xl md:text-3xl font-bold text-pink-600 mb-8 leading-relaxed relative z-10">
+                <span className="text-pink-400">🌸</span> Special Offer – All-Girls Teams <span className="text-pink-400">🌸</span>
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="rounded-2xl p-6 text-center shadow-lg border border-pink-200 bg-white/80 backdrop-blur-sm relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-white opacity-60"></div>
+                  <div className="relative z-10">
+                    <p className="text-4xl font-bold text-pink-600 mb-2 leading-relaxed">₹650</p>
+                    <p className="text-pink-500 mb-4 leading-relaxed font-medium">Early Bird (until Aug 31)</p>
+                  <button 
+                    className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105"
+                    onClick={() => window.open(REGISTER_FORM_URL, '_blank')}
+                  >
+                    Register Early
+                  </button>
+                  </div>
+                </div>
+                <div className="relative rounded-2xl p-6 text-center shadow-lg overflow-hidden bg-white/80 backdrop-blur-sm border border-pink-200">
+                  <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-white opacity-60"></div>
+                  <CautionTape />
+                  <div className="relative z-10">
+                    <p className="text-4xl font-bold text-pink-400 mb-2 leading-relaxed">₹750</p>
+                    <p className="text-pink-500 mb-4 leading-relaxed font-medium">Regular (Coming Soon)</p>
+                    <button 
+                      className="bg-gray-600 text-gray-300 font-bold py-3 px-8 rounded-full cursor-not-allowed"
+                      disabled
+                    >
+                      Coming Soon
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <p className="text-center text-pink-600/80 mt-6 text-sm leading-relaxed font-medium relative z-10">* All prices are per team member</p>
+            </div>
           </div>
         </div>
 
+        {/* Pricing Plans */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 w-full">
-          {plans.map((plan, index) => (
+          {plans.map((plan) => (
             <div 
               key={plan.title}
-              className={`relative bg-gradient-to-br ${plan.gradient} backdrop-blur-xl rounded-2xl p-6 text-white shadow-lg border border-white/10 transition-all duration-300 hover:-translate-y-2 ${
-                plan.isRecommended ? 'scale-[1.03]' : ''
+              className={`relative bg-gradient-to-br ${plan.gradient} backdrop-blur-xl rounded-2xl p-6 text-white shadow-lg border border-white/10 transition-all duration-300 hover:-translate-y-2 overflow-visible bg-transparent ${
+                plan.isDisabled ? 'opacity-90' : ''
               }`}
             >
-              {plan.isRecommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r from-cyan-400 to-violet-500 shadow-md">
-                  RECOMMENDED
-                </div>
-              )}
+              {plan.isDisabled && <CautionTape />}
               
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-white">{plan.title}</h3>
-                {plan.price.includes('₹') ? (
-                  <p className="text-3xl font-extrabold">
+              <div className="relative z-10">
+                {plan.isRecommended && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r from-cyan-400 to-violet-500 shadow-md leading-relaxed">
+                    RECOMMENDED
+                  </div>
+                )}
+                
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white leading-relaxed">{plan.title}</h3>
+                  <p className={`font-extrabold leading-relaxed ${
+                    plan.price.includes('₹') ? 'text-3xl' : 'text-2xl text-gray-50'
+                  }`}>
                     {plan.price}
                     {plan.period && (
-                      <span className="text-sm font-normal text-gray-200"> {plan.period}</span>
+                      <span className="block text-sm font-normal text-gray-200 mt-1 leading-relaxed">
+                        {plan.period}
+                      </span>
                     )}
                   </p>
-                ) : (
-                  <p className="text-lg font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-200">
-                    {plan.price}
-                  </p>
-                )}
-                <p className="text-sm text-gray-100 mb-4">
-                  {plan.description}
-                </p>
+                  <p className="text-sm text-gray-200 mt-2 leading-relaxed">{plan.description}</p>
+                </div>
+
+                <ul className="space-y-2 text-gray-200 mb-6">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-start leading-relaxed">
+                      <CheckCircle className="h-4 w-4 text-white/60 mr-2 mt-1 flex-shrink-0" />
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button 
+                  onClick={() => !plan.isDisabled && window.open(REGISTER_FORM_URL, '_blank')}
+                  className={`w-full py-3 rounded-xl font-medium transition-all leading-relaxed ${
+                    plan.isDisabled
+                      ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
+                      : `bg-gradient-to-r ${plan.buttonGradient} text-white hover:opacity-90 hover:shadow-lg`
+                  }`}
+                  disabled={plan.isDisabled}
+                >
+                  {plan.buttonText}
+                </button>
               </div>
-
-              <ul className="space-y-2 text-gray-100 mb-6">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-white/80 mr-2 flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <button 
-                onClick={() => {
-                  if (!plan.isDisabled) {
-                    window.open(REGISTER_FORM_URL, '_blank');
-                  }
-                }}
-                className={`w-full py-2 rounded-xl font-medium ${
-                  plan.isDisabled
-                    ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
-                    : `bg-gradient-to-r ${plan.buttonGradient} text-white hover:opacity-90`
-                }`}
-                disabled={plan.isDisabled}
-              >
-                {plan.buttonText}
-              </button>
             </div>
           ))}
         </div>
       </div>
-    </section>
     </section>
   );
 };

@@ -17,7 +17,7 @@ const ContactSection = () => {
     { name: "Manikanth • Operations Coordinator",    phone: "+919908942130", whatsappNumber: "919347805987" },
   ];
 
-  // Direct WhatsApp URL format
+  // Direct WhatsApp URL format — match screenshot's "Continue to Chat" page
   const getWhatsAppUrl = (number: string) => {
     const cleanNumber = number.replace(/\D/g, ""); // strip +, spaces, etc.
     return `https://api.whatsapp.com/send/?phone=${cleanNumber}&text&type=phone_number&app_absent=0`;
@@ -62,6 +62,10 @@ const ContactSection = () => {
       window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     }
   };
+
+  // Universal Google Maps URL (Directions to coordinates; opens app on mobile, tab on desktop)
+  const getGoogleMapsUrl = () =>
+    `https://www.google.com/maps/dir/?api=1&destination=17.4200774,78.6560408&travelmode=driving`;
 
   return (
     <section id="contact" className="py-20 px-6 relative">
@@ -134,9 +138,20 @@ const ContactSection = () => {
 
                         {/* WhatsApp button — Exact format */}
                         <a
-                          href={`https://api.whatsapp.com/send/?phone=919492838482&text&type=phone_number&app_absent=0`}
+                          href={getWhatsAppUrl(c.whatsappNumber)}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={(e) => {
+                            // Prevent parent handlers from blocking default behavior
+                            e.stopPropagation();
+                            const url = getWhatsAppUrl(c.whatsappNumber);
+                            // Try programmatic open to new tab for environments blocking default anchor behavior
+                            const w = window.open(url, "_blank", "noopener,noreferrer");
+                            if (!w) {
+                              // Fallback: let the anchor's default behavior handle it
+                              // Some browsers block programmatic opens; do nothing so href+target works
+                            }
+                          }}
                           className="relative inline-flex items-center px-4 py-1.5 rounded-full bg-[#25D366]/10 text-[#25D366] hover:text-white hover:bg-[#25D366]/20 transition-all duration-300 group overflow-hidden border border-[#25D366]/20 hover:border-[#25D366]/40 flex-shrink-0"
                           aria-label={`Message ${c.name} on WhatsApp`}
                         >
@@ -171,9 +186,17 @@ const ContactSection = () => {
                   Hyderabad, Telangana
                 </p>
                 <a
-                  href="https://www.google.com/maps/place/Anurag+University,+Hyderabad/@17.420077,78.656041,16z/data=!4m6!3m5!1s0x3bcb76730bf4dccf:0x2ca84b53416f0abd!8m2!3d17.4200774!4d78.6560408!16s%2Fg%2F11n0zsfgmx?hl=en&entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D"
+                  href={getGoogleMapsUrl()}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const url = getGoogleMapsUrl();
+                    const w = window.open(url, "_blank", "noopener,noreferrer");
+                    if (!w) {
+                      // Fallback to anchor default behavior
+                    }
+                  }}
                   className="relative inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 group overflow-hidden shadow-lg hover:shadow-xl hover:shadow-blue-500/20"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-blue-200/20 to-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
