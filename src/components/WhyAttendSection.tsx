@@ -52,7 +52,7 @@ const WhyAttendSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
             <span className="bg-gradient-to-r from-[#3bb6ff] to-[#a259ff] bg-clip-text text-transparent">
-              Why Attend?
+              Why To Attend?
             </span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#3bb6ff] to-[#a259ff] mx-auto rounded-full"></div>
