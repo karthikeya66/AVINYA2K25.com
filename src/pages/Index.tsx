@@ -6,12 +6,11 @@ import AboutSection from "@/components/AboutSection";
 import PrizePoolSection from "@/components/PrizePoolSection";
 import TracksSection from "@/components/TracksSection";
 import WhyAttendSection from "@/components/WhyAttendSection";
-import EventTimeline from "@/components/EventTimeline";
 import RegistrationPricingSection from "@/components/RegistrationPricingSection";
 import OrganizingCommittee from "@/components/OrganizingCommittee";
+import ProgramChairSection from "@/components/ProgramChairSection";
 import ContactSection from "@/components/ContactSection";
 import VenueSection from "@/components/VenueSection";
-import PartnersSection from "@/components/PartnersSection";
 import ClubsSection from "@/components/ClubsSection";
 import FAQSection from "@/components/FAQSection";
 import InteractiveEffects from "@/components/InteractiveEffects";
@@ -75,12 +74,6 @@ const Index = () => {
         
         <div className="section">
           <div className="container">
-            <EventTimeline />
-          </div>
-        </div>
-        
-        <div className="section">
-          <div className="container">
             <VenueSection />
           </div>
         </div>
@@ -91,17 +84,14 @@ const Index = () => {
           </div>
         </div>
         
-        <div className="section">
-          <div className="container">
-            <PartnersSection />
-          </div>
-        </div>
         
         <div className="section">
           <div className="container">
             <ClubsSection />
           </div>
         </div>
+        
+        <ProgramChairSection />
         
         <div className="section">
           <div className="container">
