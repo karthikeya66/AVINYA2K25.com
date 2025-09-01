@@ -8,8 +8,8 @@ type Club = {
 
 const clubs: Club[] = [
   { name: "Hackspace Club", role: "Igniting Innovation, One Hack at a Time", logo: "https://avinya2k25.vercel.app/assets/images/clubs/hs.jpg" },
-  { name: "Coding Club", role: "Where Coders Begin and Leaders Emerge", logo: "https://avinya2k25.vercel.app/assets/images/clubs/cb.jpg" },
-  { name: "A2I Club", role: "Towards Intelligence Beyond Artificial", logo: "https://avinya2k25.vercel.app/assets/images/clubs/a2i.jpg" },
+  { name: "Coding Clubs", role: "Where Coders Begin and Leaders Emerge", logo: "https://avinya2k25.vercel.app/assets/images/clubs/cb.jpg" },
+  { name: "A2I Club", role: "Beyond Artificial\nTowards Intelligence", logo: "https://avinya2k25.vercel.app/assets/images/clubs/a2i.jpg" },
   { name: "ISTE Chapter", role: "Empowering Tech. Enabling Growth", logo: "https://avinya2k25.vercel.app/assets/images/clubs/iste.jpg" },
 ];
 
@@ -40,7 +40,7 @@ const ClubsSection = () => {
               </div>
               <h3 className="text-xl font-bold text-white mb-2">{club.name}</h3>
               {club.role && (
-                <span className="club-role">{club.role}</span>
+                <span className="club-role whitespace-pre-line">{club.role}</span>
               )}
             </div>
           ))}
