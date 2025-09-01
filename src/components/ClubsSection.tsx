@@ -8,7 +8,7 @@ type Club = {
 
 const clubs: Club[] = [
   { name: "Hackspace Club", role: "Igniting Innovation, One Hack at a Time", logo: "https://avinya2k25.vercel.app/assets/images/clubs/hs.jpg" },
-  { name: "Coding Clubs", role: "Where Coders Begin and Leaders Emerge", logo: "https://avinya2k25.vercel.app/assets/images/clubs/cb.jpg" },
+  { name: "Coding Cubs", role: "Where Coders Begin and Leaders Emerge", logo: "https://avinya2k25.vercel.app/assets/images/clubs/cb.jpg" },
   { name: "A2I Club", role: "Beyond Artificial\nTowards Intelligence", logo: "https://avinya2k25.vercel.app/assets/images/clubs/a2i.jpg" },
   { name: "ISTE Chapter", role: "Empowering Tech. Enabling Growth", logo: "https://avinya2k25.vercel.app/assets/images/clubs/iste.jpg" },
 ];
