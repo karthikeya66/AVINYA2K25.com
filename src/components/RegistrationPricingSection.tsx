@@ -72,7 +72,7 @@ const RegistrationPricingSection = () => {
     {
       title: "Regular",
       price: "₹750",
-      period: "Open Now",
+      period: "Registrations Closed",
       description: "Standard registration with full access",
       features: [
         "Access to all events",
@@ -80,11 +80,11 @@ const RegistrationPricingSection = () => {
         "Meals included",
         "Networking opportunities"
       ],
-      buttonText: "Register Now",
-      isDisabled: false,
-      isRecommended: true,
-      gradient: "from-green-400/80 to-blue-500/80",
-      buttonGradient: "from-green-400 to-blue-500"
+      buttonText: "Registrations Closed",
+      isDisabled: true,
+      isRecommended: false,
+      gradient: "from-gray-400/80 to-gray-500/80",
+      buttonGradient: "from-gray-400 to-gray-500"
     }
   ];
 
@@ -112,12 +112,12 @@ const RegistrationPricingSection = () => {
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-white leading-relaxed">
-            <span className="bg-gradient-to-r from-[#3bb6ff] to-[#a259ff] bg-clip-text text-transparent">
-              Register Now
+            <span className="bg-gradient-to-r from-gray-400 to-gray-600 bg-clip-text text-transparent">
+              Registrations Closed
             </span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
-            Secure your spot at the most anticipated event of the year. Limited seats available!
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
+            Registration for this event has now closed. Thank you for your interest!
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-[#3bb6ff] to-[#a259ff] mx-auto rounded-full mb-12"></div>
         </div>
@@ -155,18 +155,19 @@ const RegistrationPricingSection = () => {
                     </div>
                   </div>
                 </div>
-                {/* Regular Open */}
-                <div className="rounded-2xl p-6 text-center shadow-lg border border-pink-200 bg-white/90 backdrop-blur-sm relative overflow-hidden flex flex-col">
+                {/* Regular Closed */}
+                <div className="relative rounded-2xl p-6 text-center shadow-lg overflow-hidden bg-white/80 backdrop-blur-sm border border-pink-200 flex flex-col">
                   <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-white opacity-60"></div>
+                  <CautionTape />
                   <div className="relative z-10 flex flex-col flex-grow">
-                    <p className="text-4xl font-bold text-pink-600 mb-2 leading-relaxed">₹750</p>
-                    <p className="text-pink-500 mb-4 leading-relaxed font-medium">Regular – Open Now</p>
+                    <p className="text-4xl font-bold text-pink-400 mb-2 leading-relaxed">₹750</p>
+                    <p className="text-pink-500 mb-4 leading-relaxed font-medium">Regular – Registrations Closed</p>
                     <div className="mt-auto">
                       <button 
-                        className="w-full h-12 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-full transition-all hover:scale-105"
-                        onClick={() => window.open(REGISTER_FORM_URL, '_blank')}
+                        className="w-full h-12 bg-gray-600 text-gray-300 font-bold rounded-full cursor-not-allowed"
+                        disabled
                       >
-                        Register Now
+                        Registrations Closed
                       </button>
                     </div>
                   </div>

@@ -48,28 +48,32 @@ const TracksSection = () => {
       title: "AI Agents",
       description: "Design intelligent agents powered by ML, NLP, and computer vision to automate complex tasks and solve real-world challenges.",
       gradient: "from-primary to-primary-glow",
-      technologies: ["TensorFlow", "PyTorch", "OpenAI", "Hugging Face"]
+      technologies: ["TensorFlow", "PyTorch", "OpenAI", "Hugging Face"],
+      pdfPath: "/PS/AI AGENTS problem statements.pdf"
     },
     {
       icon: Shield,
       title: "Ethical AI",
       description: "Create responsible AI systems that ensure fairness, transparency, and ethical decision-making.",
       gradient: "from-accent-blue to-accent-cyan",
-      technologies: ["AI Ethics", "Fairness", "Transparency", "Responsible AI"]
+      technologies: ["AI Ethics", "Fairness", "Transparency", "Responsible AI"],
+      pdfPath: "/PS/AI Ethics & Responsible AI Problem Statements (AVINYA).pdf"
     },
     {
       icon: Heart,
       title: "AI in Healthcare",
       description: "Build AI-driven solutions for healthcare — from diagnosis and treatment to patient care and management.",
       gradient: "from-success to-success-glow",
-      technologies: ["Medical APIs", "IoT", "Computer Vision", "Data Analytics"]
+      technologies: ["Medical APIs", "IoT", "Computer Vision", "Data Analytics"],
+      pdfPath: "/PS/AI in Health Care Problem Statements(AVINYA).pdf"
     },
     {
       icon: Zap,
       title: "Generative AI",
       description: "Innovate with Generative AI to create transformative solutions that make a real impact.",
       gradient: "from-accent-pink to-primary",
-      technologies: ["LLMs", "Generative Models", "Creative AI", "Emerging Tech"]
+      technologies: ["LLMs", "Generative Models", "Creative AI", "Emerging Tech"],
+      pdfPath: "/PS/GEN AI problem statements.pdf"
     }
   ];
 
@@ -155,10 +159,13 @@ const TracksSection = () => {
                       </div>
                       
                       {/* View Details Button */}
-                      <div className="flex items-center text-sm font-medium text-primary group-hover:translate-x-1 transition-transform duration-300 mt-4">
-                        <span>Learn more</span>
+                      <button 
+                        onClick={() => window.open(track.pdfPath, '_blank')}
+                        className="flex items-center text-sm font-medium text-primary group-hover:translate-x-1 transition-transform duration-300 mt-4 bg-primary/10 hover:bg-primary/20 px-4 py-2 rounded-lg border border-primary/20 hover:border-primary/40 transition-all duration-300"
+                      >
+                        <span>Problem statements</span>
                         <ArrowRight className="ml-1 h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-                      </div>
+                      </button>
                     </div>
                   </div>
                 </div>
